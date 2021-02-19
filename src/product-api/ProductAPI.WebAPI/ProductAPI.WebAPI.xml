@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ProductAPI.WebAPI</name>
+    </assembly>
+    <members>
+        <member name="T:ProductAPI.WebAPI.Controllers.ProductController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ProductAPI.WebAPI.Controllers.ProductController.List(Mvp24Hours.Core.DTOs.Models.PagingCriteriaRequest)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ProductAPI.WebAPI.Controllers.ProductController.GetById(System.Int32)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:ProductAPI.WebAPI.Extensions.ServiceBuilderExtensions">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ProductAPI.WebAPI.Extensions.ServiceBuilderExtensions.AddMyServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ProductAPI.WebAPI.Extensions.ServiceBuilderExtensions.AddPipelines(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ProductAPI.WebAPI.Extensions.ServiceBuilderExtensions.AddDocumentation(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:ProductAPI.WebAPI.Program">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ProductAPI.WebAPI.Program.Main(System.String[])">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ProductAPI.WebAPI.Program.CreateHostBuilder(System.String[])">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:ProductAPI.WebAPI.Startup">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ProductAPI.WebAPI.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="P:ProductAPI.WebAPI.Startup.Configuration">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ProductAPI.WebAPI.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            This method gets called by the runtime. Use this method to add services to the container.
+            </summary>
+        </member>
+        <member name="M:ProductAPI.WebAPI.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            </summary>
+        </member>
+    </members>
+</doc>

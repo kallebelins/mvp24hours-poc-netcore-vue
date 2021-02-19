@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>.\ProductAPI.WebAPI.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Mvp24Hours.WebAPI" Version="1.0.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ProductAPI.Application\ProductAPI.Application.csproj" />
+    <ProjectReference Include="..\ProductAPI.Core\ProductAPI.Core.csproj" />
+    <ProjectReference Include="..\ProductAPI.MakeUpAPI.Application\ProductAPI.MakeUpAPI.Application.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="AuthenticationAPI.Core">
+      <HintPath>..\..\shared\assemblies\AuthenticationAPI.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="AuthenticationAPI.Filters">
+      <HintPath>..\..\shared\assemblies\AuthenticationAPI.Filters.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+
+</Project>

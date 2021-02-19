@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AuthenticationAPI.Filters</name>
+    </assembly>
+    <members>
+        <member name="T:AuthenticationAPI.Filters.OAuthAuthorizeAttribute">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:AuthenticationAPI.Filters.OAuthAuthorizeAttribute.OnActionExecutionAsync(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext,Microsoft.AspNetCore.Mvc.Filters.ActionExecutionDelegate)">
+            <summary>
+            
+            </summary>
+            <param name="context"></param>
+            <param name="next"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
