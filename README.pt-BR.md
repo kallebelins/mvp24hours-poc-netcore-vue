@@ -1,7 +1,7 @@
 # .Net Core + Gateway (Ocelot) + Microserviços (Monolítico e Pipeline) + Autenticação JWT + VueJS (Vuex, Vuetify)
 Esse projeto foi criado com o objetivo de realizar prova de conceito de referência para arquiteturas corporativas.
 
-![Flow archtecture](https://github.com/kallebelins/mvp24hours-poc-netcore-vue/tree/main/docs/images/flow-architecture.png)
+![Flow archtecture](https://raw.githubusercontent.com/kallebelins/mvp24hours-poc-netcore-vue/main/docs/images/flow-architecture.PNG)
 
 ## Frontend (VueJS)
 ...
