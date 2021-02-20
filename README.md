@@ -9,10 +9,10 @@ This project was created with the objective of performing a proof of concept ref
 ## Gateway API (.Net Core + Ocelot)
 ...
 
-## Product API (DDD Concept + Simple Architecture + Monolithic)
+## Product API (DDD Concept + Integration Architecture + Pipeline)
 ...
 
-## Customer API (DDD Concept + Integration Architecture + Pipeline)
+## Customer API (DDD Concept + Simple Architecture + Monolithic)
 ...
 
 ## Authentication API (Token com JWT)
