@@ -1,4 +1,4 @@
-# .Net Core + Gateway (Ocelot) + Microserviços (Monolítico e Pipeline) + Autenticação JWT + VueJS (Vuex, Vuetify)
+# .Net Core + Gateway (Ocelot) + Microservices (Monolithic and Pipeline) + JWT Authentication + VueJS (Vuex, Vuetify)
 This project was created with the objective of performing a proof of concept reference for corporate architectures.
 
 ![Flow archtecture](https://raw.githubusercontent.com/kallebelins/mvp24hours-poc-netcore-vue/main/docs/images/flow-architecture.PNG)
@@ -9,10 +9,10 @@ This project was created with the objective of performing a proof of concept ref
 ## Gateway API (.Net Core + Ocelot)
 ...
 
-## Product API (Conceito DDD + Arquitetura Simples + Monolítica)
+## Product API (DDD Concept + Simple Architecture + Monolithic)
 ...
 
-## Customer API (Conceito DDD + Arquitetura de Integração + Pipeline)
+## Customer API (DDD Concept + Integration Architecture + Pipeline)
 ...
 
 ## Authentication API (Token com JWT)
