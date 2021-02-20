@@ -15,5 +15,5 @@ This project was created with the objective of performing a proof of concept ref
 ## Customer API (DDD Concept + Simple Architecture + Monolithic)
 ...
 
-## Authentication API (Token com JWT)
+## Authentication API (JWT Token)
 ...
