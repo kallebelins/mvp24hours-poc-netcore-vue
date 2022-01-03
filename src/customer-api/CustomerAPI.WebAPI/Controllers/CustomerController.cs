@@ -1,16 +1,13 @@
 ﻿using AuthenticationAPI.Filters;
 using CustomerAPI.Application;
-using CustomerAPI.Core.DTOs.Creates;
-using CustomerAPI.Core.DTOs.Details;
-using CustomerAPI.Core.DTOs.Filters;
-using CustomerAPI.Core.DTOs.Lists;
-using CustomerAPI.Core.DTOs.Updates;
+using CustomerAPI.Core.ValueObjects.Customers;
 using Microsoft.AspNetCore.Mvc;
 using Mvp24Hours.Core.Contract.ValueObjects.Logic;
 using Mvp24Hours.Core.DTOs;
 using Mvp24Hours.Core.DTOs.Models;
 using Mvp24Hours.Core.Extensions;
-using Mvp24Hours.WebAPI.Extensions;
+using Mvp24Hours.WebAPI.Controller;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace CustomerAPI.WebAPI.Controllers
@@ -22,19 +19,16 @@ namespace CustomerAPI.WebAPI.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [JWTAuthorize]
-    public class CustomerController : ControllerBase
+    public class CustomerController : BaseMvpController
     {
         /// <summary>
         /// 
         /// </summary>
         [HttpGet]
         [Route("", Name = "CustomerGetBy")]
-        public async Task<IPagingResult<GetByCustomerResponse>> GetBy([FromQuery] GetByCustomerRequest filter, [FromQuery] PagingCriteriaRequest clause)
+        public Task<IPagingResult<IList<GetByCustomerResponse>>> GetBy([FromQuery] GetByCustomerRequest filter, [FromQuery] PagingCriteriaRequest clause)
         {
-            var result = await FacadeService.CustomerService.GetBy(filter, clause.ToPagingService());
-            result.AddLinkSelf("CustomerGetBy");
-            result.AddLinkItem("CustomerGetById");
-            return result;
+            return FacadeService.CustomerService.GetBy(filter, clause.ToPagingService());
         }
 
         /// <summary>
@@ -42,11 +36,9 @@ namespace CustomerAPI.WebAPI.Controllers
         /// </summary>
         [HttpGet]
         [Route("{id}", Name = "CustomerGetById")]
-        public async Task<IBusinessResult<GetByIdCustomerResponse>> GetById(int id)
+        public Task<IBusinessResult<GetByIdCustomerResponse>> GetById(int id)
         {
-            var result = await FacadeService.CustomerService.GetById(id);
-            result.AddLinkSelf("CustomerGetById");
-            return result;
+            return FacadeService.CustomerService.GetById(id);
         }
 
         /// <summary>

@@ -14,7 +14,7 @@ namespace CustomerAPI.Application
         /// </summary>
         public static ICustomerService CustomerService
         {
-            get { return HttpContextHelper.GetService<ICustomerService>(); }
+            get { return ServiceProviderHelper.GetService<ICustomerService>(); }
         }
         #endregion
     }

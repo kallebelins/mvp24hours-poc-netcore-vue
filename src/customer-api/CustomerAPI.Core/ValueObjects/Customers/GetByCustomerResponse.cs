@@ -3,7 +3,7 @@ using CustomerAPI.Core.Entities;
 using Mvp24Hours.Core.Contract.Mappings;
 using System.Collections.Generic;
 
-namespace CustomerAPI.Core.DTOs.Lists
+namespace CustomerAPI.Core.ValueObjects.Customers
 {
     public class GetByCustomerResponse : IMapFrom<Customer>
     {

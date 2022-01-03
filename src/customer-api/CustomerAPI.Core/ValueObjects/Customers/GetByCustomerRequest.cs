@@ -1,4 +1,4 @@
-﻿namespace CustomerAPI.Core.DTOs.Filters
+﻿namespace CustomerAPI.Core.ValueObjects.Customers
 {
     public class GetByCustomerRequest
     {

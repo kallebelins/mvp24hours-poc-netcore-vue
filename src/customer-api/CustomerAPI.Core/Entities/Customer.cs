@@ -1,18 +1,14 @@
 ﻿using Mvp24Hours.Core.Entities;
-using System.ComponentModel.DataAnnotations;
-using System.Runtime.Serialization;
+using System.Collections.Generic;
 
 namespace CustomerAPI.Core.Entities
 {
-    [DataContract(IsReference = false)]
-    public class Customer : EntityBaseLog<int, string>
+    public class Customer : EntityBase<Customer, int>
     {
-        [DataMember]
-        [Required]
-        [StringLength(50)]
         public virtual string Name { get; set; }
-        [DataMember]
-        [StringLength(2000)]
         public virtual string Note { get; set; }
+        public virtual bool Active { get; set; }
+
+        public virtual ICollection<Contact> Contacts { get; set; }
     }
 }

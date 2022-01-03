@@ -5,7 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Mvp24Hours.Infrastructure.Data" Version="1.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.10" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
+    <PackageReference Include="Mvp24Hours.Infrastructure.Data.EFCore" Version="2.12.291" />
   </ItemGroup>
 
   <ItemGroup>

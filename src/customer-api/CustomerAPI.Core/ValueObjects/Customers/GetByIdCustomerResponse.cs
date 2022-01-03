@@ -1,10 +1,9 @@
 ﻿using AutoMapper;
-using CustomerAPI.Core.DTOs.Lists;
 using CustomerAPI.Core.Entities;
 using Mvp24Hours.Core.Contract.Mappings;
 using System;
 
-namespace CustomerAPI.Core.DTOs.Details
+namespace CustomerAPI.Core.ValueObjects.Customers
 {
     public class GetByIdCustomerResponse : GetByCustomerResponse, IMapFrom<Customer>
     {
