@@ -1,14 +1,16 @@
 ﻿using Mvp24Hours.Core.Entities;
+using System;
 using System.Collections.Generic;
 
 namespace CustomerAPI.Core.Entities
 {
     public class Customer : EntityBase<Customer, int>
     {
-        public virtual string Name { get; set; }
-        public virtual string Note { get; set; }
-        public virtual bool Active { get; set; }
+        public DateTime Created { get; set; }
+        public string Name { get; set; }
+        public string Note { get; set; }
+        public bool Active { get; set; }
 
-        public virtual ICollection<Contact> Contacts { get; set; }
+        public ICollection<Contact> Contacts { get; set; }
     }
 }

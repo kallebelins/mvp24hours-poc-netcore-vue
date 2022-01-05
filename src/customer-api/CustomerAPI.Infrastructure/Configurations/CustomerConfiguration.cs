@@ -1,19 +1,19 @@
 ﻿using CustomerAPI.Core.Entities;
-using CustomerAPI.Infrastructure.Contract;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace CustomerAPI.Infrastructure.Builders
 {
-    public class CustomerConfiguration : IModelConfiguration<Customer>
+    public class CustomerConfiguration : IEntityTypeConfiguration<Customer>
     {
-        public void Apply(EntityTypeBuilder<Customer> builder)
+        public void Configure(EntityTypeBuilder<Customer> builder)
         {
             // customer->id
             builder
                 .HasKey(p => p.Id);
+            // contact->created
             builder
-                .Property(p => p.Id)
+                .Property(p => p.Created)
                 .IsRequired();
             // customer->name
             builder

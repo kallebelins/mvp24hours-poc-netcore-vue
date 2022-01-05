@@ -1,9 +1,6 @@
 ﻿using CustomerAPI.Core.Entities;
-using CustomerAPI.Infrastructure.Contract;
 using Microsoft.EntityFrameworkCore;
 using Mvp24Hours.Infrastructure.Data.EFCore;
-using System;
-using System.Linq;
 using System.Reflection;
 
 namespace CustomerAPI.Infrastructure.Data
@@ -28,26 +25,8 @@ namespace CustomerAPI.Infrastructure.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
-            {
-                ApplyMappingsFromAssembly(assembly, builder);
-            }
+            builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
             base.OnModelCreating(builder);
-        }
-
-        private void ApplyMappingsFromAssembly(Assembly assembly, ModelBuilder builder)
-        {
-            var types = assembly.GetExportedTypes()
-                .Where(t => t.GetInterfaces().Any(i =>
-                    i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IModelConfiguration<>)))
-                .ToList();
-
-            foreach (var type in types)
-            {
-                var instance = Activator.CreateInstance(type);
-                var methodInfo = type.GetMethod("Apply");
-                methodInfo?.Invoke(instance, new object[] { builder.Entity<Customer>() });
-            }
         }
 
         #endregion

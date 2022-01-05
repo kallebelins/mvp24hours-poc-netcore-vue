@@ -2,16 +2,15 @@
 using CustomerAPI.Core.Entities;
 using Mvp24Hours.Core.Contract.Mappings;
 
-namespace CustomerAPI.Core.ValueObjects.Customers
+namespace ContactAPI.Core.ValueObjects.Contacts
 {
-    public class CreateCustomerResponse : IMapFrom<Customer>
+    public class CreateContactResponse : IMapFrom<Contact>
     {
         public int Id { get; set; }
-        public string Name { get; set; }
 
         public virtual void Mapping(Profile profile)
         {
-            profile.CreateMap<Customer, CreateCustomerResponse>();
+            profile.CreateMap<Contact, CreateContactResponse>();
         }
     }
 }
