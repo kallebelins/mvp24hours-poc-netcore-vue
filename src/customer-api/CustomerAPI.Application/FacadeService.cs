@@ -16,6 +16,13 @@ namespace CustomerAPI.Application
         {
             get { return ServiceProviderHelper.GetService<ICustomerService>(); }
         }
+        /// <summary>
+        /// <see cref="CustomerAPI.Core.Contract.Logic.ICustomerContactService"/>
+        /// </summary>
+        public static ICustomerContactService CustomerContactService
+        {
+            get { return ServiceProviderHelper.GetService<ICustomerContactService>(); }
+        }
         #endregion
     }
 }
