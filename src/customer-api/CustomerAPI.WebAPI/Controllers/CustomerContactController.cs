@@ -19,7 +19,7 @@ namespace CustomerAPI.WebAPI.Controllers
     /// 
     /// </summary>
     [Produces("application/json")]
-    [Route("api/[controller]")]
+    [Route("api/customer/[controller]")]
     [ApiController]
     //[JWTAuthorize]
     public class CustomerContactController : BaseMvpController
@@ -30,10 +30,10 @@ namespace CustomerAPI.WebAPI.Controllers
         [HttpPost]
         [ProducesResponseType(typeof(IBusinessResult<int>), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [Route("~/api/customer/{customerId:int}/contact", Name = "ContactCreate")]
+        [Route("{customerId:int}/contact", Name = "ContactCreate")]
         public async Task<ActionResult<IBusinessResult<int>>> Create(int customerId, [FromBody] CreateContactRequest dto, CancellationToken cancellationToken)
         {
-            var result = await FacadeService.CustomerContactService.Create(dto, customerId, cancellationToken);
+            var result = await FacadeService.CustomerContactService.Create(customerId, dto, cancellationToken);
             return result.HasErrors ? BadRequest(result) : Created(nameof(Create), result);
         }
 
@@ -43,10 +43,10 @@ namespace CustomerAPI.WebAPI.Controllers
         [HttpPut]
         [ProducesResponseType(typeof(IBusinessResult<VoidResult>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [Route("~/api/customer/{customerId:int}/contact/{id}", Name = "ContactUpdate")]
+        [Route("{customerId:int}/contact/{id}", Name = "ContactUpdate")]
         public async Task<ActionResult<IBusinessResult<VoidResult>>> Update(int customerId, int id, [FromBody] UpdateContactRequest dto, CancellationToken cancellationToken)
         {
-            var result = await FacadeService.CustomerContactService.Update(id, dto, customerId, cancellationToken);
+            var result = await FacadeService.CustomerContactService.Update(customerId, id, dto, cancellationToken);
             return result.HasErrors ? BadRequest(result) : Ok(result);
         }
 
@@ -56,10 +56,10 @@ namespace CustomerAPI.WebAPI.Controllers
         [HttpDelete]
         [ProducesResponseType(typeof(IBusinessResult<VoidResult>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [Route("~/api/customer/{customerId:int}/contact/{id}", Name = "ContactDelete")]
+        [Route("{customerId:int}/contact/{id}", Name = "ContactDelete")]
         public async Task<ActionResult<IBusinessResult<VoidResult>>> Delete(int customerId, int id, CancellationToken cancellationToken)
         {
-            var result = await FacadeService.CustomerContactService.Delete(id, customerId, cancellationToken);
+            var result = await FacadeService.CustomerContactService.Delete(customerId, id, cancellationToken);
             return result.HasErrors ? BadRequest(result) : Ok(result);
         }
 

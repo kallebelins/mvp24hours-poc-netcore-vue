@@ -24,7 +24,7 @@ namespace CustomerAPI.WebAPI.Extensions
             services.AddDbContext<CustomerDBContext>(options =>
                 options.UseMySQL(configuration.GetConnectionString("CustomerDbContext")));
 
-            services.AddMvp24HoursDbAsyncService<CustomerDBContext>();
+            services.AddMvp24HoursDbServiceAsync<CustomerDBContext>();
 
             return services;
         }

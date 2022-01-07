@@ -24,26 +24,23 @@ namespace CustomerAPI.Application.Logic
     {
         #region [ Commands ]
 
-        public async Task<IBusinessResult<int>> Create(CreateContactRequest dto, int customerId, CancellationToken cancellationToken = default)
+        public async Task<IBusinessResult<int>> Create(int customerId, CreateContactRequest dto, CancellationToken cancellationToken = default)
         {
             var entity = dto.MapTo<Contact>();
             entity.CustomerId = customerId;
 
-            if (await this.AddAsync(entity) > 0)
+            if (await AddAsync(entity) > 0)
             {
-                return entity
-                    .Id
-                    .ToBusiness();
-                // Messages.OPERATION_SUCCESS.ToMessageResult("ContactCreate", MessageType.Success)
+                return entity.Id.ToBusiness(Messages.OPERATION_SUCCESS.ToMessageResult("ContactCreate", MessageType.Success));
             }
             return Messages.OPERATION_FAIL
                 .ToMessageResult("ContactCreate", MessageType.Error)
                 .ToBusiness<int>();
         }
 
-        public async Task<IBusinessResult<VoidResult>> Update(int id, UpdateContactRequest dto, int customerId, CancellationToken cancellationToken = default)
+        public async Task<IBusinessResult<VoidResult>> Update(int customerId, int id, UpdateContactRequest dto, CancellationToken cancellationToken = default)
         {
-            var entity = await UnitOfWork.GetRepositoryAsync<Contact>().GetByAsync(x => x.Id == id && x.CustomerId == customerId);
+            var entity = await Repository.GetByAsync(x => x.Id == id && x.CustomerId == customerId);
             if (entity == null)
             {
                 return Messages.OPERATION_FAIL_NOT_FOUND
@@ -53,7 +50,7 @@ namespace CustomerAPI.Application.Logic
 
             AutoMapperHelper.Map<Contact>(entity, dto);
 
-            if (await this.ModifyAsync(entity) > 0)
+            if (await ModifyAsync(entity) > 0)
             {
                 return Messages.OPERATION_SUCCESS
                     .ToMessageResult("Update", MessageType.Success)
@@ -65,9 +62,9 @@ namespace CustomerAPI.Application.Logic
                 .ToBusiness<VoidResult>();
         }
 
-        public async Task<IBusinessResult<VoidResult>> Delete(int id, int customerId, CancellationToken cancellationToken = default)
+        public async Task<IBusinessResult<VoidResult>> Delete(int customerId, int id, CancellationToken cancellationToken = default)
         {
-            var entity = await UnitOfWork.GetRepositoryAsync<Contact>().GetByAsync(x => x.Id == id && x.CustomerId == customerId);
+            var entity = await Repository.GetByAsync(x => x.Id == id && x.CustomerId == customerId);
             if (entity == null)
             {
                 return Messages.OPERATION_FAIL_NOT_FOUND
@@ -75,7 +72,7 @@ namespace CustomerAPI.Application.Logic
                     .ToBusiness<VoidResult>();
             }
 
-            if (await this.RemoveAsync(entity) > 0)
+            if (await RemoveAsync(entity) > 0)
             {
                 return Messages.OPERATION_SUCCESS
                     .ToMessageResult("Delete", MessageType.Success)

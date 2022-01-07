@@ -51,7 +51,7 @@ namespace CustomerAPI.Application.Logic
                 }
 
                 // is prospect
-                if (filter.HasNoContact)
+                if (filter.IsProspect)
                 {
                     clause = clause.And<Customer, CustomerIsPropectSpec>();
                 }
@@ -88,12 +88,9 @@ namespace CustomerAPI.Application.Logic
         {
             var entity = dto.MapTo<Customer>();
 
-            if (await this.AddAsync(entity) > 0)
+            if (await AddAsync(entity) > 0)
             {
-                return entity
-                    .Id
-                    .ToBusiness();
-                // Messages.OPERATION_SUCCESS.ToMessageResult("CustomerCreate", MessageType.Success)
+                return entity.Id.ToBusiness(Messages.OPERATION_SUCCESS.ToMessageResult("CustomerCreate", MessageType.Success));
             }
             return Messages.OPERATION_FAIL
                 .ToMessageResult("CustomerCreate", MessageType.Error)
@@ -102,7 +99,7 @@ namespace CustomerAPI.Application.Logic
 
         public async Task<IBusinessResult<VoidResult>> Update(int id, UpdateCustomerRequest dto, CancellationToken cancellationToken = default)
         {
-            var entity = await UnitOfWork.GetRepositoryAsync<Customer>().GetByIdAsync(id);
+            var entity = await Repository.GetByIdAsync(id);
             if (entity == null)
             {
                 return Messages.OPERATION_FAIL_NOT_FOUND
@@ -112,7 +109,7 @@ namespace CustomerAPI.Application.Logic
 
             AutoMapperHelper.Map<Customer>(entity, dto);
 
-            if (await this.ModifyAsync(entity) > 0)
+            if (await ModifyAsync(entity) > 0)
             {
                 return Messages.OPERATION_SUCCESS
                     .ToMessageResult("Update", MessageType.Success)
@@ -126,7 +123,7 @@ namespace CustomerAPI.Application.Logic
 
         public async Task<IBusinessResult<VoidResult>> Delete(int id, CancellationToken cancellationToken = default)
         {
-            var entity = await UnitOfWork.GetRepositoryAsync<Customer>().GetByIdAsync(id);
+            var entity = await Repository.GetByIdAsync(id);
             if (entity == null)
             {
                 return Messages.OPERATION_FAIL_NOT_FOUND
@@ -134,7 +131,7 @@ namespace CustomerAPI.Application.Logic
                     .ToBusiness<VoidResult>();
             }
 
-            if (await this.RemoveAsync(entity) > 0)
+            if (await RemoveAsync(entity) > 0)
             {
                 return Messages.OPERATION_SUCCESS
                     .ToMessageResult("Delete", MessageType.Success)

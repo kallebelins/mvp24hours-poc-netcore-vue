@@ -36,7 +36,7 @@ namespace CustomerAPI.WebAPI
         public void ConfigureServices(IServiceCollection services)
         {
             #region [ Mvp24Hours ]
-            services.AddMvp24Hours();
+            services.AddMvp24Hours(Configuration);
             services.AddMvp24HoursService();
             services.AddMvp24HoursLogging();
             services.AddMvp24HoursMapService(Assembly.GetExecutingAssembly());

@@ -8,8 +8,8 @@ namespace CustomerAPI.Core.Contract.Logic
 {
     public interface ICustomerContactService
     {
-        Task<IBusinessResult<int>> Create(CreateContactRequest dto, int customerId, CancellationToken cancellationToken = default);
-        Task<IBusinessResult<VoidResult>> Update(int id, UpdateContactRequest dto, int customerId, CancellationToken cancellationToken = default);
-        Task<IBusinessResult<VoidResult>> Delete(int id, int customerId, CancellationToken cancellationToken = default);
+        Task<IBusinessResult<int>> Create(int customerId, CreateContactRequest dto, CancellationToken cancellationToken = default);
+        Task<IBusinessResult<VoidResult>> Update(int customerId, int id, UpdateContactRequest dto, CancellationToken cancellationToken = default);
+        Task<IBusinessResult<VoidResult>> Delete(int customerId, int id, CancellationToken cancellationToken = default);
     }
 }
